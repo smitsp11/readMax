@@ -173,3 +173,28 @@ button:disabled {
     color: #fff;
     box-shadow: 0 2px 0 #000;
 }
+
+/* CINEMA MODE STATES */
+
+/* 1. The Transition: Make the fade smooth */
+.controls, .reader-display {
+    transition: all 0.8s ease-in-out;
+}
+
+/* 2. When Cinema Mode is ON */
+body.cinema-mode {
+    cursor: none; /* Hide the mouse cursor */
+}
+
+body.cinema-mode .controls {
+    opacity: 0;           /* Make invisible */
+    pointer-events: none; /* Make unclickable so you don't hit hidden buttons */
+    transform: translateY(-20px); /* Slide it up slightly */
+}
+
+body.cinema-mode .reader-display {
+    transform: scale(1.3); /* Make the text 30% larger for immersion */
+}
+
+/* 3. Safety Net: If they move the mouse, show the cursor briefly? 
+   No, let's keep it simple. Spacebar to pause is the rule. */

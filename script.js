@@ -29,25 +29,31 @@ startBtn.addEventListener('click', togglePlay);
 // 2. PLAY/PAUSE LOGIC
 function togglePlay() {
     if (isPlaying) {
-        // PAUSE
+        // --- PAUSE SEQUENCE ---
         isPlaying = false;
-        clearTimeout(timerId); // Stop the pending loop
+        clearTimeout(timerId);
+        
+        // Restore UI
+        document.body.classList.remove('cinema-mode');
+        
         startBtn.textContent = "Resume";
-        startBtn.style.backgroundColor = "#007bff"; // Blue
+        startBtn.style.backgroundColor = "#007bff";
     } else {
-        // PLAY
+        // --- PLAY SEQUENCE ---
         if (wordsArray.length === 0) processInputText();
         
-        // If we reached the end, reset
         if (currentIndex >= wordsArray.length) {
             currentIndex = 0;
         }
 
         isPlaying = true;
-        startBtn.textContent = "Pause";
-        startBtn.style.backgroundColor = "#dc3545"; // Red for stop
         
-        // Kick off the loop
+        // Dim the lights (Enter Cinema Mode)
+        document.body.classList.add('cinema-mode');
+
+        startBtn.textContent = "Pause";
+        startBtn.style.backgroundColor = "#dc3545";
+        
         playLoop();
     }
 }
@@ -182,5 +188,18 @@ window.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
     if (e.code === 'Escape' && !helpModal.classList.contains('hidden')) {
         helpModal.classList.add('hidden');
+    }
+});
+
+// 9. CINEMA MODE SAFETY CLICK
+// If the user clicks anywhere on the black screen, pause the reader.
+document.addEventListener('click', (e) => {
+    // Only act if we are currently playing (Cinema Mode is likely on)
+    if (isPlaying) {
+        // Check if they clicked a control button (like the slider) 
+        // We don't want to pause if they are just adjusting speed blind.
+        // But since controls have pointer-events: none, this click 
+        // will only register on the background/body.
+        togglePlay();
     }
 });
