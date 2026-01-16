@@ -114,3 +114,73 @@ function renderWord(word) {
     pivotSpan.textContent = pivotChar;
     rightSpan.textContent = rightText;
 }
+
+// 7. KEYBOARD SHORTCUTS
+document.addEventListener('keydown', (e) => {
+    // If user is typing in the textarea, don't trigger shortcuts!
+    if (document.activeElement === textInput) return;
+
+    switch(e.code) {
+        case 'Space':
+            e.preventDefault(); // Stop page scrolling
+            togglePlay();
+            break;
+        
+        case 'ArrowLeft':
+            e.preventDefault();
+            // Rewind 10 words (or to 0 if we are near the start)
+            currentIndex = Math.max(0, currentIndex - 10);
+            renderWord(wordsArray[currentIndex]); // Show where we landed
+            break;
+            
+        case 'ArrowRight':
+            e.preventDefault();
+            // Fast forward 10 words
+            currentIndex = Math.min(wordsArray.length - 1, currentIndex + 10);
+            renderWord(wordsArray[currentIndex]);
+            break;
+            
+        case 'ArrowUp':
+            e.preventDefault();
+            // Increase Speed by 10
+            wpmSlider.value = parseInt(wpmSlider.value) + 10;
+            wpmDisplay.textContent = wpmSlider.value;
+            break;
+
+        case 'ArrowDown':
+            e.preventDefault();
+            // Decrease Speed by 10
+            wpmSlider.value = parseInt(wpmSlider.value) - 10;
+            wpmDisplay.textContent = wpmSlider.value;
+            break;
+    }
+});
+
+// 8. MODAL LOGIC
+const helpBtn = document.getElementById('helpBtn');
+const helpModal = document.getElementById('helpModal');
+const closeModal = document.getElementById('closeModal');
+
+// Open
+helpBtn.addEventListener('click', () => {
+    helpModal.classList.remove('hidden');
+});
+
+// Close (X button)
+closeModal.addEventListener('click', () => {
+    helpModal.classList.add('hidden');
+});
+
+// Close (Click outside box)
+window.addEventListener('click', (e) => {
+    if (e.target === helpModal) {
+        helpModal.classList.add('hidden');
+    }
+});
+
+// Close (Escape key)
+document.addEventListener('keydown', (e) => {
+    if (e.code === 'Escape' && !helpModal.classList.contains('hidden')) {
+        helpModal.classList.add('hidden');
+    }
+});

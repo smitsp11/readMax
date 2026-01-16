@@ -32,7 +32,7 @@ textarea {
 
 button {
     padding: 10px 20px;
-    cursor: pointer
+    cursor: pointer;
     background-color: #007BFF;
     color: white;
     border: none;
@@ -91,3 +91,85 @@ button:disabled {
 
 .top { top: 0; }
 .bottom { bottom: 0; }
+
+/* NEW: Secondary Button Style */
+.secondary-btn {
+    background-color: #444;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-left: 10px;
+}
+.secondary-btn:hover {
+    background-color: #666;
+}
+
+/* MODAL STYLES */
+.modal {
+    display: flex; /* Hidden by default via class 'hidden' */
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.8); /* Dark overlay */
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+
+.modal.hidden {
+    display: none;
+    opacity: 0;
+}
+
+.modal-content {
+    background-color: #222;
+    padding: 30px;
+    border: 1px solid #444;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 400px;
+    text-align: left;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.close-btn:hover { color: #fff; }
+
+/* Shortcut List Styling */
+.shortcut-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+.shortcut-list li {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+.key {
+    background-color: #444;
+    border: 1px solid #666;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-family: monospace;
+    font-weight: bold;
+    color: #fff;
+    box-shadow: 0 2px 0 #000;
+}

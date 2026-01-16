@@ -9,17 +9,16 @@
 <body>
     <div class="app-container">
         <div class="controls">
+            <div class="buttons">
+                <button id="startBtn" disabled>Start Reading</button>
+                <button id="helpBtn" class="secondary-btn" title="Keyboard Shortcuts">?</button>
+            </div>
             <h1>readMax</h1>
             <textarea id="inputText" placeholder="Paste your text here...">The quick brown fox jumps over the lazy dog.</textarea>
 
             <div class="settings">
                 <label>Speed: <span id="wpmDisplay">300</span> WPM</label>
-                <input type="range" id="wpmSlider" min="100" max="1000" value="300" step="10">
-            </div>
-
-            <div class="buttons">
-                <button id="testBtn">Step Through Words (Test)</button>
-                <button id="startBtn" disabled>Start Auto-Read (Coming Soon)</button>
+                <input type="range" id="wpmSlider" min="100" max="800" value="300" step="10">
             </div>
         </div>
 
@@ -35,9 +34,23 @@
         </div>
     </div>
 
+    <div id="helpModal" class="modal hidden">
+        <div class="modal-content">
+            <span id="closeModal" class="close-btn">&times;</span>
+            <h2>Keyboard Shortcuts</h2>
+            <ul class="shortcut-list">
+                <li><span class="key">Space</span> <span>Play / Pause</span></li>
+                <li><span class="key">←</span> <span>Rewind 10 words</span></li>
+                <li><span class="key">→</span> <span>Fast Forward 10 words</span></li>
+                <li><span class="key">↑</span> <span>Speed Up (+10 WPM)</span></li>
+                <li><span class="key">↓</span> <span>Slow Down (-10 WPM)</span></li>
+            </ul>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
-</head>
+</html>
 
 
     
