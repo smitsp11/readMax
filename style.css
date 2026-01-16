@@ -40,7 +40,7 @@ button {
     font-size: 1rem;
 }
 
-button:disable {
+button:disabled {
     background-color: #555;
     cursor: not-allowed;
 }
