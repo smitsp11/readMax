@@ -9,3 +9,85 @@ body {
     margin: 0;
 }
 
+.app-container {
+    width: 80%;
+    max-width: 600px;
+    text-align: center;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #555;
+    border-radius: 10px;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.settings {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    cursor: pointer
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button:disable {
+    background-color: #555;
+    cursor: not-allowed;
+}
+
+.reader-display {
+    margin-top: 40px;
+    position: relative;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 40px;
+    font-weight:bold;
+}
+
+.word-container {
+    display: flex;
+    align-items: baseline;
+    width: 100%;
+}
+
+#left-part {
+    flex: 1;
+    text-align: right;
+    color: #ffffff;
+}
+
+#pivot-char {
+    color: #ff3b30;
+    font-weight: 900;
+    width: auto;
+}
+
+#right-part {
+    flex: 1;
+    text-align: left;
+    color: #ffffff;
+}
+
+.guide-line {
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background-color: #333;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.top { top: 0; }
+.bottom { bottom: 0; }
